@@ -5,7 +5,10 @@ import java.util.regex.Pattern;
 import java.util.*;
 
 public class UserRegistration {
-	public void firstNameValidator(String firstName) {
+	Scanner sc = new Scanner(System.in);
+	public void firstNameValidator() {
+		System.out.println("Enter your first name");
+		String firstName = sc.next();
 		Pattern pattern = Pattern.compile("^([A-Z])[a-zA-Z]{2,}$");
 		Matcher matcher = pattern.matcher(firstName);
 		Boolean matchFound = matcher.find();
@@ -15,13 +18,26 @@ public class UserRegistration {
 			System.out.println("Please check your input");
 		}
 	}
+	public void lastNameValidator() {
+		System.out.println("Enter your last name");
+		String lastName = sc.next();
+		Pattern pattern = Pattern.compile("^([A-Z])[a-zA-Z]{2,}$");
+		Matcher matcher = pattern.matcher(lastName);
+		Boolean matchFound = matcher.find();
+		if (matchFound) {
+			System.out.println("Last Name is Validated");
+		} else {
+			System.out.println("Please check your input");
+		}
+	}
+ 
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration Page");
-		System.out.println("Please enter your name where the first letter should be capital and have min 3 characters:");
-		Scanner sc = new Scanner(System.in);
+		
 		UserRegistration u = new UserRegistration();
-		u.firstNameValidator(sc.next());
+		u.firstNameValidator();
+		u.lastNameValidator();
 
 	}
 
